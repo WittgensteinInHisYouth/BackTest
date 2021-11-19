@@ -10,15 +10,8 @@
 ## Table of Contents
 * [General Info](#general-information)
 * [Requirements](#requirements)
-* [Control Flow](#control-flow)
 * [Features](#features)
-* [Screenshots](#screenshots)
-* [Setup](#setup)
-* [Usage](#usage)
-* [Project Status](#project-status)
-* [Task List](#task-list)
-* [Project Principles and Design Decisions](#project-principles-and-design-decisions)
-* [Acknowledgements](#acknowledgements)
+* [Documentation](#documentation)
 * [Contact](#contact)
 <!-- * [License](#license) -->
 
@@ -64,8 +57,33 @@ dtype: object
 ```
 <img width="650" src="https://github.com/waitaminutewhoareyou/BackTest/blob/main/myplot.png">
 
-- 
+- Conversion from gross return(before mgn. fee, perf. fee and commission fee) to net reutrn
 
+```Python
+data = pd.read_excel("Monthly Return.xlsx", index_col=0, parse_dates=True)
+data = data.asfreq('M')
+convertor = Gross2Net(data.squeeze())
+convertor.main()
+```
+
+```plaintext
+| Date       |    Raw Ret |   Value after fee |   High water mark |   Accrued performance fee |      NAV |     Net ret |
+|:-----------|-----------:|------------------:|------------------:|--------------------------:|---------:|------------:|
+| 1972-02-29 |  0         |          0.99875  |           1       |               0           | 0.99875  | -0.00125    |
+| 1972-03-31 |  0         |          0.997502 |           1       |               0           | 0.997502 | -0.00249844 |
+| 1972-04-30 |  0         |          0.996255 |           1       |               0           | 0.996255 | -0.00374531 |
+| 1972-05-31 | -0.0027062 |          0.992313 |           1       |               0           | 0.992313 | -0.0076867  |
+| 1972-06-30 |  0         |          0.991073 |           1       |               0           | 0.991073 | -0.00892709 |
+| 1972-07-31 |  0         |          0.989834 |           1       |               0           | 0.989834 | -0.0101659  |
+| 1972-08-31 |  0         |          0.988597 |           1       |               0           | 0.988597 | -0.0114032  |
+| 1972-09-30 |  0.015319  |          1.00251  |           1       |               0.000501069 | 1.002    |  0.00200428 |
+| 1972-10-31 |  0.0070103 |          1.00828  |           1       |               0.00165602  | 1.00662  |  0.00662406 |
+| 1972-11-30 |  0.11433   |          1.1223   |           1       |               0.0244593   | 1.09784  |  0.0978371  |
+| 1972-12-31 |  0.14142   |          1.27961  |           1       |               0.0559217   | 1.22369  |  0.223687   |
+| 1973-01-31 |  0.09928   |          1.34364  |           1.22369 |               0.0239916   | 1.31965  |  0.319653   |
+```
+## Documentation
+This section explains the exact calculations happening behind each metrics. I would complete this section after figuring out how to typeset latex in Github.
 <!-- Optional -->
 <!-- ## License -->
 <!-- This project is open source and available under the [... License](). -->
