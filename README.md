@@ -64,57 +64,7 @@ dtype: object
 ```
 <img width="650" src="https://github.com/waitaminutewhoareyou/BackTest/blob/main/myplot.png">
 
-- Trading Portal
-- Follow-up monitor and Feedback Control
-
-
-
-## Screenshots
-![Example screenshot](./img/screenshot.png)
-<!-- If you have screenshots you'd like to share, include them here. -->
-
-
-## Setup
-What are the project requirements/dependencies? Where are they listed? A requirements.txt or a Pipfile.lock file perhaps? Where is it located?
-
-Proceed to describe how to install / setup one's local environment / get started with the project.
-
-```bash
-git clone https://github.com/HCMPTELTD/Source-Code.git
-```
-
-## Usage
-For a detailed practice of the workflow, please consult the [tutorial](examples.com) written by [Yuze Gao](https://github.com/Gxxzx).
-
-`write-your-code-here`
-
-
-## Project Status
-This project is _mostly_ _complete_ . Occasional patches would be added per manager's need. See next section for potential contributions.
-
-
-## Task List 
-- [ ] Automate the process of including new asset.
-- [ ] Reset administrative right of SQL 
-## Project Principles and Design Decisions
-
--   Usability is everything: it is better to be self-explanatory than consistent.
--   Everything that has been implemented should be tested.
--   Inline documentation is good; Dedicated (separate) documentation is better.
-    The two are not mutually exclusive.
--   Note that many helper functions are written to support major functionality, as such in case of a breakdown or a debug process during trading, error message can propagate through a lengthy chain of low-level helper functions.  <br />
-    However, the best practice is to debug from the top-level functions, understanding which major component generates the error message and then track the errors down to lower-level functions.
-
-
-## Acknowledgements
-- This project was originated from Jeff and mostly developed by Zhishe.
-- Many thanks to [Yuze Gao](https://github.com/Gxxzx) and [Wenyan Zhang](https://github.com/pikajiu7) for improving code quality.
-
-
-## Contact
-This docs is created and actively maintained by [@Yihong Ji](https://github.com/WittgensteinInHisYouth) - feel free to contact me.
-
-
+- 
 
 <!-- Optional -->
 <!-- ## License -->
