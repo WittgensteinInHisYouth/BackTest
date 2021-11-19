@@ -111,7 +111,7 @@ class BackTest:
         s.loc['Max. Underwater Duration'] = max_time_under_water
         s.loc['Total Underwater Duration'] = total_time_under_water
         self.AUM.plot()
-        plt.set_
+        plt.grid(True)
         plt.show()
         return s
 
