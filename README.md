@@ -62,6 +62,7 @@ Max. Underwater Duration               555 days 00:00:00
 Total Underwater Duration             1287 days 00:00:00
 dtype: object
 ```
+<img width="650" src="https://github.com/waitaminutewhoareyou/BackTest/blob/main/myplot.png">
 
 - Trading Portal
 - Follow-up monitor and Feedback Control
