@@ -110,8 +110,9 @@ class BackTest:
         max_time_under_water, total_time_under_water = self.under_water_time()
         s.loc['Max. Underwater Duration'] = max_time_under_water
         s.loc['Total Underwater Duration'] = total_time_under_water
-        # self.AUM.plot()
-        # plt.show()
+        self.AUM.plot()
+        plt.set_
+        plt.show()
         return s
 
 class Gross2Net:
