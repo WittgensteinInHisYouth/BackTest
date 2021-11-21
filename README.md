@@ -84,7 +84,7 @@ convertor.main()
 ```
 ## Documentation
 This section explains the exact calculations happening behind each metrics. I would complete this section after figuring out how to typeset latex in Github.
-
+<img src="https://render.githubusercontent.com/render/math?math=e^{i \pi} = -1">
 <!-- Optional -->
 <!-- ## License -->
 <!-- This project is open source and available under the [... License](). -->
