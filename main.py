@@ -2,9 +2,15 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 pd.set_option('display.max_columns', None)
+
+
 class BackTest:
-    def __init__(self, data):
-        self.data = data.dropna()
+    def __init__(self, data, start_time=None, end_time=None):
+
+        data = data.squeeze()
+        data = data[start_time:end_time]
+        self.data = data.dropna(
+        )
         self.time_freq = pd.infer_freq(data.index)
 
         if self.time_freq == 'B' or self.time_freq == 'D' :
@@ -26,8 +32,7 @@ class BackTest:
         return np.prod(1 + self.data.values) - 1
 
     def annualized_return(self):
-        return self.total_return() ** (self.T / self.data.shape[0]) - 1
-        # return np.mean(self.data.values) * self.T
+        return (1 + self.total_return() ) ** (self.T / len(self.data)) - 1
 
     def annualized_volatility(self):
         return np.std(self.data.values) * np.sqrt(self.T)
@@ -54,6 +59,7 @@ class BackTest:
 
     def under_water_time(self):
         df = self.data.to_frame()
+        df['Return'] = df.values
         df['cummax'] = df['Return'].cummax()
 
         df['underwater'] = pd.to_timedelta((df['Return'] < df['cummax']).astype(int), unit=self.time_freq)
@@ -76,8 +82,6 @@ class BackTest:
         monthly_negative_return = self.monthly_return[self.monthly_return < 0]
         return monthly_negative_return.min()
 
-    def max_peak_to_trough(self):
-        return
 
     def compute_stat(self):
         equity = self.AUM.values
@@ -116,7 +120,7 @@ class BackTest:
         return s
 
 class Gross2Net:
-    def __init__(self,data, fixed_fee=0.015, cost=0.005, perf_fee=0.2):
+    def __init__(self, data, fixed_fee=0.015, cost=0.005, perf_fee=0.2):
 
         self.data = data.dropna()
         self.fixed_fee = fixed_fee
@@ -187,12 +191,12 @@ class Gross2Net:
         return self.df.head(30)
 
 if __name__ == '__main__':
-    data = pd.read_excel("Daily Return.xlsx", index_col=0, parse_dates=True)
+    data = pd.read_excel("Daily Return.xlsx", index_col=0, parse_dates=True, na_values=[0, '0'])
     data = data.asfreq('B')
-    test = BackTest(data.squeeze())
+    test = BackTest(data, '2015-01-01', '2021-09-30')
     print(test.compute_stat())
 
     # data = pd.read_excel("Monthly Return.xlsx", index_col=0, parse_dates=True)
     # data = data.asfreq('M')
-    # test = Gross2Net(data.squeeze())
+    # test = Gross2Net(data)
     # print(test.main())
